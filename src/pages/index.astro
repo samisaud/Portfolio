@@ -1,17 +1,330 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import WebGLBackground from '../components/WebGLBackground.astro';
+import Navigation from '../components/Navigation.astro';
+import StarButton from '../components/StarButton.astro';
+import OrbitSystem from '../components/OrbitSystem.astro';
+import Copilot from '../components/Copilot.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="SAMI SAUD | AI & Software Engineer">
+    <head>
+        <style is:inline>
+            /* Social links */
+            .social-links { display: flex; gap: 15px; margin-top: 40px; }
+            .social-btn {
+                display: inline-flex; align-items: center; gap: 10px;
+                color: #fff; text-decoration: none; font-size: 0.95rem; font-weight: 600;
+                padding: 12px 24px; border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 50px; transition: all 0.3s;
+                background: rgba(255,255,255,0.05);
+            }
+            .social-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+            .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+            /* Contact form */
+            #contact-section { display: flex; justify-content: flex-start; align-items: center; position: relative; min-height: 60vh; }
+            .form-container { width: 100%; max-width: 500px; z-index: 20; }
+            .contact-form {
+                background: rgba(15,15,15,0.8); backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.1);
+                padding: 40px; border-radius: 20px;
+                display: flex; flex-direction: column; gap: 20px;
+            }
+            .contact-form input, .contact-form textarea {
+                background: transparent; border: none;
+                border-bottom: 1px solid rgba(255,255,255,0.3);
+                color: #fff; font-size: 1rem; padding: 12px 0;
+                outline: none; transition: border-color 0.3s ease;
+            }
+            .contact-form input:focus, .contact-form textarea:focus { border-bottom: 1px solid var(--accent); }
+
+            @media (max-width: 900px) {
+                #contact-section { flex-direction: column; justify-content: flex-start; padding-bottom: 100px; }
+                .form-container { width: 100%; margin-top: 50px; }
+            }
+        </style>
+    </head>
+
+    <WebGLBackground />
+    <Navigation />
+    <Copilot />
+
+    <div id="view-container">
+
+        <!-- PAGE: OVERVIEW -->
+        <div id="page-index" class="page-view active" style="opacity: 1;">
+            <div style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+                <span class="label">AI & Software Engineer</span>
+                <h1>Building Systems<br>That Work.</h1>
+                <p class="punchline">
+                    Sami Saud. Based in Riyadh, KSA.<br>
+                    I bridge the gap between complex AI research and usable, production-ready applications. I don't just build models; I build reliable systems that solve real business problems from start to finish.
+                </p>
+
+                <div class="social-links">
+                    <a href="https://github.com/yourusername" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div>
+                <h2>My Approach</h2>
+                <div class="spec-grid" style="margin-top: 40px;">
+                    <div class="spec-item">
+                        <span class="label">Priority 01</span>
+                        <h3>Scalable Architecture</h3>
+                        <p class="desc">An AI model is only as useful as the software running it. I specialize in designing applications, search systems, and data pipelines that are fast, reliable, and capable of handling real-world user traffic without failing.</p>
+                    </div>
+                    <div class="spec-item">
+                        <span class="label">Priority 02</span>
+                        <h3>Measurable Results</h3>
+                        <p class="desc">I focus strictly on outcomes. Whether it is engineering automated workflows that reduce manual work by 25%, or building AI tools that directly increase company revenue, technology should deliver clear value to the business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: BACKGROUND -->
+        <div id="page-architecture" class="page-view">
+            <div style="min-height: 50vh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 50px;">
+                <h1>Background<br>& Skills.</h1>
+                <p class="punchline">The academic foundation and technical tools I use to build software.</p>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="spec-grid">
+                <div class="spec-item">
+                    <span class="label">Education</span>
+                    <h3>MS Business Analytics</h3>
+                    <p class="desc">Arizona State University (ASU)<br>GPA: 3.9/4.0 | Aug 2023 – May 2024</p>
+                </div>
+                <div class="spec-item">
+                    <span class="label">Education</span>
+                    <h3>BTech Computer Science</h3>
+                    <p class="desc">Aligarh Muslim University (AMU)<br>GPA: 3.8/4.0 | Aug 2017 – Aug 2021</p>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <h2>Technical Skills</h2>
+            <div class="spec-grid" style="margin-top: 40px;">
+                <div class="spec-item">
+                    <span class="label">AI & Machine Learning</span>
+                    <h3>Intelligent Systems</h3>
+                    <p class="desc">Building AI agents, smart search systems, and optimizing machine learning models.</p>
+                    <div class="tag-container">
+                        <span class="tag">LangChain</span>
+                        <span class="tag">OpenAI</span>
+                        <span class="tag">Pinecone Vector Search</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">TensorFlow</span>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <span class="label">Software Engineering</span>
+                    <h3>Core Development</h3>
+                    <p class="desc">The foundational programming languages used for backend logic and data management.</p>
+                    <div class="tag-container">
+                        <span class="tag">Python</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">SQL / PostgreSQL</span>
+                        <span class="tag">Go</span>
+                    </div>
+                </div>
+                <div class="spec-item" style="grid-column: 1 / -1;">
+                    <span class="label">Cloud & Infrastructure</span>
+                    <h3>Deployment & Hosting</h3>
+                    <p class="desc">Cloud platforms and tools required to securely host and scale applications for thousands of users.</p>
+                    <div class="tag-container">
+                        <span class="tag">Amazon Web Services (AWS)</span>
+                        <span class="tag">Google Cloud (GCP)</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">FastAPI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: EXPERIENCE -->
+        <div id="page-deployments" class="page-view">
+            <div style="min-height: 40vh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 50px;">
+                <h1>Experience<br>& Projects.</h1>
+                <p class="punchline">A track record of measurable impact across professional roles and academic projects.</p>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div style="display: flex; flex-direction: column; gap: 40px;">
+
+                <div class="metric-block">
+                    <span class="label">Data Scientist @ Charity Staffing Inc.</span>
+                    <div class="spec-grid">
+                        <div>
+                            <span class="metric-value">40<span style="font-size:0.5em;vertical-align:top;">%</span></span>
+                            <h3>Faster Processing.</h3>
+                        </div>
+                        <div>
+                            <p class="desc">Built a GPT-4o customer AI agent handling 9,000+ interactions. Architected a hybrid RAG system preventing hallucinations, driving $11K in revenue influence, and cutting latency by 40%.</p>
+                            <div class="tag-container">
+                                <span class="tag">Conversational AI</span>
+                                <span class="tag">AWS Hosting</span>
+                                <span class="tag">Data Pipelines</span>
+                            </div>
+                            <StarButton onclick="triggerCopilot('Deep dive into the Charity Staffing architecture.', 'charity')" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-block">
+                    <span class="label">AI Research Engineer @ Arizona State Univ.</span>
+                    <div class="spec-grid">
+                        <div>
+                            <span class="metric-value">60<span style="font-size:0.5em;vertical-align:top;">%</span></span>
+                            <h3>Time Saved.</h3>
+                        </div>
+                        <div>
+                            <p class="desc">Engineered an AI-powered semantic search tool, cutting literature review time across 1 million+ medical papers by 60%. Designed an automated scheduling system that reduced resource conflicts by 45%.</p>
+                            <div class="tag-container">
+                                <span class="tag">Semantic Search</span>
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">Optimization</span>
+                            </div>
+                            <StarButton onclick="triggerCopilot('Explain the ASU Semantic Search and RL algorithms.', 'asu')" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-block" style="background: rgba(255,255,255,0.02);">
+                    <span class="label">Software Engineer @ ArcSoftech</span>
+                    <div class="spec-grid">
+                        <div>
+                            <span class="metric-value">50<span style="font-size:0.5em;vertical-align:top;">k+</span></span>
+                            <h3>Daily Transactions.</h3>
+                        </div>
+                        <div>
+                            <p class="desc">Delivered 15+ production-ready backend modules processing 50,000+ daily transactions. Maintained 99.8% uptime and built automated reporting tools that cut manual administrative workload by 25%.</p>
+                            <div class="tag-container">
+                                <span class="tag">Backend Software</span>
+                                <span class="tag">Database Design</span>
+                                <span class="tag">Reliability</span>
+                            </div>
+                            <StarButton onclick="triggerCopilot('How did you maintain 99.8% uptime at ArcSoftech?', 'arcsoftech')" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-block" style="background: rgba(255,255,255,0.02);">
+                    <span class="label">Academic Capstone @ PetSmart</span>
+                    <div class="spec-grid">
+                        <div>
+                            <h3 style="font-size: 2rem; margin: 10px 0; line-height: 1.2;">Retail Inventory Analytics.</h3>
+                        </div>
+                        <div>
+                            <p class="desc">Engineered cloud-based data pipelines to track inventory performance and predict restocking needs. Cleaned complex datasets to improve demand forecast accuracy by 20% in a high-volume environment.</p>
+                            <div class="tag-container">
+                                <span class="tag">Data Engineering</span>
+                                <span class="tag">Forecasting</span>
+                            </div>
+                            <StarButton onclick="triggerCopilot('Explain the cloud pipeline built for PetSmart.', 'petsmart')" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 100px; padding-bottom: 50px;">
+                <span class="label" style="color: #666;">End of Experience</span>
+            </div>
+        </div>
+
+        <!-- PAGE: CONTACT -->
+        <div id="page-contact" class="page-view">
+            <div style="min-height: 25vh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 30px;">
+                <h1>Get In Touch.</h1>
+                <p class="punchline">Ready to build systems that solve real problems? Send me a message below.</p>
+            </div>
+
+            <section id="contact-section">
+                <div class="form-container">
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent! I will get back to you shortly.');">
+                        <label class="label">Your Name</label>
+                        <input type="text" placeholder="John Doe" required />
+
+                        <label class="label" style="margin-top: 15px;">Your Email</label>
+                        <input type="email" placeholder="john@company.com" required />
+
+                        <label class="label" style="margin-top: 15px;">Message</label>
+                        <textarea rows="4" placeholder="How can I help you?" required></textarea>
+
+                        <StarButton type="submit" fullWidth={true} label="Send Message">Send Message</StarButton>
+                    </form>
+
+                    <div style="margin-top: 40px; padding-left: 10px;">
+                        <span class="label">Direct Contact</span>
+                        <p style="color: #fff; font-size: 1.1rem; margin-top: 5px;">ssaud.asu@gmail.com</p>
+                        <p style="color: #fff; font-size: 1.1rem;">+1 (480) 712-3491</p>
+                    </div>
+                </div>
+
+                <OrbitSystem />
+            </section>
+        </div>
+
+    </div><!-- end #view-container -->
+
+</Layout>
+
+<script>
+    // --- STAR BUTTON PATH SIZING ---
+    function initStarButtons() {
+        document.querySelectorAll('.star-btn').forEach((btn) => {
+            const el = btn as HTMLElement;
+            const w = el.offsetWidth;
+            const h = el.offsetHeight;
+            el.style.setProperty('--path', `path('M 0 0 H ${w} V ${h} H 0 V 0')`);
+        });
+    }
+    window.addEventListener('load', initStarButtons);
+    window.addEventListener('resize', initStarButtons);
+
+    // --- SPA PAGE ROUTING ---
+    let currentPage = 'index';
+    const container = document.getElementById('view-container') as HTMLElement;
+
+    function switchPage(targetPageId: string) {
+        if (currentPage === targetPageId) return;
+
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        document.getElementById(`nav-${targetPageId}`)?.classList.add('active');
+
+        const oldPage = document.getElementById(`page-${currentPage}`) as HTMLElement;
+        const newPage = document.getElementById(`page-${targetPageId}`) as HTMLElement;
+
+        (window as any).gsap.to(oldPage, {
+            opacity: 0, duration: 0.3,
+            onComplete: () => {
+                oldPage.classList.remove('active');
+                newPage.classList.add('active');
+                container.scrollTop = 0;
+                (window as any).gsap.to(newPage, { opacity: 1, duration: 0.5, delay: 0.1 });
+                setTimeout(initStarButtons, 50);
+            }
+        });
+
+        currentPage = targetPageId;
+    }
+
+    (window as any).switchPage = switchPage;
+</script>

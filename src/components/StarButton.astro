@@ -1,0 +1,70 @@
+---
+interface Props {
+    onclick?: string;
+    label?: string;
+    type?: 'button' | 'submit';
+    fullWidth?: boolean;
+}
+
+const { onclick, label = 'View Architecture', type = 'button', fullWidth = false } = Astro.props;
+---
+
+<button
+    class:list={['star-btn', { 'full-width': fullWidth }]}
+    onclick={onclick}
+    type={type}
+>
+    <div class="star-btn-light"></div>
+    <div class="star-btn-bg">
+        <svg preserveAspectRatio="none" viewBox="0 0 100 40">
+            <use href="#star-bg-pattern"/>
+        </svg>
+    </div>
+    <span class="star-btn-text">
+        {type !== 'submit' && (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        )}
+        <slot>{label}</slot>
+    </span>
+</button>
+
+<style is:global>
+    .star-btn {
+        position: relative; z-index: 3; overflow: hidden;
+        height: 48px; padding: 0 24px;
+        display: inline-flex; align-items: center; justify-content: center;
+        border-radius: 30px; border: none; cursor: pointer;
+        background: transparent; margin-top: 20px;
+        --path: path('M 0 0 H 200 V 48 H 0 V 0');
+    }
+    .star-btn.full-width { width: 100%; height: 50px; margin-top: 15px; }
+    .star-btn:disabled { opacity: 0.5; pointer-events: none; }
+
+    .star-btn-light {
+        position: absolute; inset: 0; width: 110px; aspect-ratio: 1;
+        background: radial-gradient(ellipse at center, rgba(255,255,255,0.9), transparent, transparent);
+        offset-path: var(--path); offset-distance: 0%;
+        animation: star-light-anim 3s linear infinite; z-index: 1;
+    }
+    @keyframes star-light-anim {
+        0% { offset-distance: 0%; }
+        100% { offset-distance: 100%; }
+    }
+
+    .star-btn-bg {
+        position: absolute; inset: 1px; background-color: transparent;
+        z-index: 2; border-radius: inherit; overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .star-btn-bg svg { width: 100%; height: 100%; display: block; }
+
+    .star-btn-text {
+        position: relative; z-index: 3; font-size: 0.95rem; font-weight: 600;
+        background: linear-gradient(to top, #999, #fff);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        display: flex; align-items: center; gap: 8px;
+    }
+    .star-btn-text svg { stroke: #fff; }
+</style>

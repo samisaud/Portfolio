@@ -1,0 +1,103 @@
+---
+---
+<div class="orbit-wrapper">
+    <div class="orbit-system">
+        <div class="center-node">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+        </div>
+
+        <!-- Orbit 1: Core Languages -->
+        <div class="orbit orbit-1">
+            <div class="tech-node" style="top:50%;left:100%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python"></div>
+            <div class="tech-node" style="top:100%;left:50%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++"></div>
+            <div class="tech-node" style="top:50%;left:0%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="SQL"></div>
+            <div class="tech-node" style="top:0%;left:50%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt="Redis"></div>
+        </div>
+
+        <!-- Orbit 2: ML Stack -->
+        <div class="orbit orbit-2">
+            <div class="tech-node" style="top:50%;left:100%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" alt="PyTorch"></div>
+            <div class="tech-node" style="top:93.3%;left:75%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"></div>
+            <div class="tech-node" style="top:93.3%;left:25%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-Learn"></div>
+            <div class="tech-node" style="top:50%;left:0%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" alt="Pandas"></div>
+            <div class="tech-node" style="top:6.7%;left:25%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" alt="NumPy"></div>
+            <div class="tech-node" style="top:6.7%;left:75%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" alt="Jupyter"></div>
+        </div>
+
+        <!-- Orbit 3: Cloud & Infra -->
+        <div class="orbit orbit-3">
+            <div class="tech-node" style="top:50%;left:100%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS"></div>
+            <div class="tech-node" style="top:85.3%;left:85.3%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="GCP"></div>
+            <div class="tech-node" style="top:100%;left:50%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" alt="K8S"></div>
+            <div class="tech-node" style="top:85.3%;left:14.6%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker"></div>
+            <div class="tech-node" style="top:50%;left:0%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" alt="FastAPI"></div>
+            <div class="tech-node" style="top:14.6%;left:14.6%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/neo4j/neo4j-original.svg" alt="Neo4j"></div>
+            <div class="tech-node" style="top:0%;left:50%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="Go"></div>
+            <div class="tech-node" style="top:14.6%;left:85.3%"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .orbit-wrapper {
+        position: fixed; bottom: 5vh; right: 0;
+        width: 40vh; height: 80vh;
+        overflow: hidden; pointer-events: none; z-index: 0;
+    }
+    .orbit-system {
+        position: absolute; right: -40vh; top: 0;
+        width: 80vh; height: 80vh;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .center-node {
+        width: 10vh; height: 10vh;
+        background: #fff; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        z-index: 10; box-shadow: 0 0 3vh rgba(255,255,255,0.15);
+    }
+    .center-node svg { width: 50%; height: 50%; color: #000; }
+
+    .orbit {
+        position: absolute; border: 1px dashed rgba(255,255,255,0.2);
+        border-radius: 50%; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .orbit-1 { width: 35%; height: 35%; animation: spin 20s linear infinite; }
+    .orbit-2 { width: 65%; height: 65%; animation: spin 30s linear infinite reverse; }
+    .orbit-3 { width: 95%; height: 95%; animation: spin 45s linear infinite; }
+
+    .tech-node {
+        position: absolute; width: 6vh; height: 6vh;
+        background: #fff; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 0.5vh 1.5vh rgba(0,0,0,0.3);
+        transform: translate(-50%, -50%);
+        animation: counter-spin inherit;
+        animation-direction: inherit;
+    }
+    .tech-node img { width: 60%; height: 60%; object-fit: contain; }
+
+    @keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes counter-spin { 100% { transform: translate(-50%, -50%) rotate(-360deg); } }
+
+    @media (max-width: 900px) {
+        .orbit-wrapper {
+            position: relative; bottom: auto; left: -5vw; right: auto;
+            width: 100vw; height: 350px;
+        }
+        .orbit-system {
+            right: auto; left: 50%; top: -350px;
+            width: 700px; height: 700px;
+            transform: translateX(-50%);
+        }
+        .center-node { width: 80px; height: 80px; }
+        .tech-node { width: 50px; height: 50px; }
+    }
+</style>
