@@ -85,8 +85,46 @@ const { title } = Astro.props;
     .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
     .spec-item { border-top: 1px solid var(--border-color); padding-top: 20px; }
 
-    @media (max-width: 900px) {
-        .page-view { padding: 80px 5vw 120px 5vw; max-width: 100%;}
-        .metric-block { padding: 30px 20px; }
+    /* --- TABLET --- */
+    @media (max-width: 1024px) {
+        .page-view { padding: 12vh 7vw 12vh 7vw; }
+        .spec-grid { grid-template-columns: 1fr; gap: 30px; }
+    }
+
+    /* --- MOBILE --- */
+    @media (max-width: 768px) {
+        .page-view { 
+            padding: 80px 6vw 140px 6vw; 
+            max-width: 100%;
+        }
+        h1 { 
+            font-size: clamp(2.2rem, 10vw, 3.2rem); 
+            letter-spacing: -0.02em;
+            word-break: break-word;
+        }
+        h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+        h3 { font-size: 1.05rem; }
+        .punchline { 
+            font-size: clamp(0.9rem, 4vw, 1rem); 
+            margin-top: 15px;
+        }
+        .desc { font-size: 0.95rem; }
+        .metric-block { padding: 25px 18px; }
+        .metric-value { font-size: clamp(2.5rem, 12vw, 4rem); }
+        .spec-grid { grid-template-columns: 1fr; gap: 25px; }
+        .spec-item { padding-top: 15px; }
+        .spec-item[style*="grid-column"] { grid-column: 1 !important; }
+        .tag { font-size: 0.72rem; padding: 4px 10px; }
+        .section-divider { margin: 40px 0; }
+        .label { font-size: 0.75rem; }
+    }
+
+    /* --- SMALL MOBILE --- */
+    @media (max-width: 480px) {
+        .page-view { padding: 70px 5vw 130px 5vw; }
+        h1 { font-size: clamp(1.9rem, 11vw, 2.6rem); }
+        .punchline { font-size: 0.88rem; line-height: 1.5; }
+        .metric-block { padding: 20px 14px; }
+        .metric-value { font-size: clamp(2.2rem, 13vw, 3.5rem); }
     }
 </style>

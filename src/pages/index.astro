@@ -39,10 +39,20 @@ import Copilot from '../components/Copilot.astro';
             }
             .contact-form input:focus, .contact-form textarea:focus { border-bottom: 1px solid var(--accent); }
 
-            @media (max-width: 900px) {
-                #contact-section { flex-direction: column; justify-content: flex-start; padding-bottom: 100px; }
-                .form-container { width: 100%; margin-top: 50px; }
+            @media (max-width: 768px) {
+            #contact-section { 
+                flex-direction: column; 
+                justify-content: flex-start; 
+                padding-bottom: 100px;
+                min-height: auto;
             }
+            .form-container { 
+                width: 100%; 
+                margin-top: 30px;
+                max-width: 100%;
+            }
+            .contact-form { padding: 25px 18px; }
+        }
         </style>
     </head>
 
@@ -106,12 +116,17 @@ import Copilot from '../components/Copilot.astro';
                 <div class="spec-item">
                     <span class="label">Education</span>
                     <h3>MS Business Analytics</h3>
-                    <p class="desc">Arizona State University (ASU)<br>GPA: 3.9/4.0 | Aug 2023 – May 2024</p>
+                    <p class="desc">Arizona State University (ASU)<br>GPA: 3.9/4.0 </p>
                 </div>
                 <div class="spec-item">
                     <span class="label">Education</span>
-                    <h3>BTech Computer Science</h3>
-                    <p class="desc">Aligarh Muslim University (AMU)<br>GPA: 3.8/4.0 | Aug 2017 – Aug 2021</p>
+                    <h3>M.Tech Computer Science</h3>
+                    <p class="desc">Aligarh Muslim University (AMU)<br>GPA: 4.0/4.0 </p>
+                </div>
+                <div class="spec-item">
+                    <span class="label">Education</span>
+                    <h3>B.Tech Computer Science</h3>
+                    <p class="desc">Dr. A.P.J. Abdul Kalam Technical University (AKTU)<br>GPA: 3.8/4.0 </p>
                 </div>
             </div>
 
@@ -182,7 +197,7 @@ import Copilot from '../components/Copilot.astro';
                                 <span class="tag">AWS Hosting</span>
                                 <span class="tag">Data Pipelines</span>
                             </div>
-                            <StarButton onclick="triggerCopilot('Deep dive into the Charity Staffing architecture.', 'charity')" />
+                            <StarButton onclick="triggerCopilot('Deep dive into the Charity Staffing.', 'charity')" />
                         </div>
                     </div>
                 </div>
