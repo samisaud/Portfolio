@@ -10,8 +10,7 @@ import Copilot from '../components/Copilot.astro';
 <Layout title="SAMI SAUD | AI & Software Engineer">
     <head>
         <style is:inline>
-            /* Social links */
-            .social-links { display: flex; gap: 15px; margin-top: 40px; }
+            .social-links { display: flex; gap: 15px; margin-top: 40px; flex-wrap: wrap; }
             .social-btn {
                 display: inline-flex; align-items: center; gap: 10px;
                 color: #fff; text-decoration: none; font-size: 0.95rem; font-weight: 600;
@@ -22,7 +21,6 @@ import Copilot from '../components/Copilot.astro';
             .social-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
             .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
-            /* Contact form */
             #contact-section { display: flex; justify-content: flex-start; align-items: center; position: relative; min-height: 60vh; }
             .form-container { width: 100%; max-width: 500px; z-index: 20; }
             .contact-form {
@@ -36,23 +34,74 @@ import Copilot from '../components/Copilot.astro';
                 border-bottom: 1px solid rgba(255,255,255,0.3);
                 color: #fff; font-size: 1rem; padding: 12px 0;
                 outline: none; transition: border-color 0.3s ease;
+                font-family: 'Crimson Text', Georgia, serif;
             }
             .contact-form input:focus, .contact-form textarea:focus { border-bottom: 1px solid var(--accent); }
 
+            /* Project buttons */
+            .project-btn {
+                display: inline-flex; align-items: center; gap: 8px;
+                padding: 12px 22px; border-radius: 50px;
+                font-family: 'Cinzel', serif; font-size: 0.78rem;
+                font-weight: 600; letter-spacing: 0.08em;
+                text-decoration: none; transition: all 0.3s; cursor: pointer;
+            }
+            .project-btn-primary {
+                background: var(--accent); color: #fff;
+                border: 1px solid var(--accent);
+                box-shadow: 0 4px 20px rgba(21,121,246,0.3);
+            }
+            .project-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(21,121,246,0.5); }
+            .project-btn-secondary {
+                background: transparent; color: #fff;
+                border: 1px solid var(--border-gold);
+            }
+            .project-btn-secondary:hover { background: rgba(212,175,55,0.08); transform: translateY(-2px); }
+
+            /* Live badge */
+            .live-badge {
+                background: rgba(39,174,96,0.15);
+                border: 1px solid rgba(39,174,96,0.4);
+                color: #27ae60; padding: 4px 12px;
+                border-radius: 50px; font-size: 0.72rem;
+                font-family: 'Cinzel', serif; letter-spacing: 0.1em;
+            }
+
+            /* Browser chrome for iframe */
+            .browser-chrome {
+                border-radius: 12px; overflow: hidden;
+                border: 1px solid var(--border-gold); margin-top: 40px;
+            }
+            .browser-bar {
+                background: rgba(212,175,55,0.05);
+                padding: 10px 16px;
+                border-bottom: 1px solid var(--border-gold);
+                display: flex; align-items: center; gap: 8px;
+            }
+            .browser-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+            /* Stat mini grid */
+            .stat-mini-grid {
+                display: grid; grid-template-columns: 1fr 1fr;
+                gap: 15px; margin-top: 25px;
+            }
+            .stat-mini {
+                border-top: 1px solid var(--border-gold);
+                padding-top: 12px;
+            }
+            .stat-mini-value {
+                font-family: 'Cinzel', serif;
+                font-size: 1.8rem; font-weight: 700; color: #fff;
+            }
+
             @media (max-width: 768px) {
-            #contact-section { 
-                flex-direction: column; 
-                justify-content: flex-start; 
-                padding-bottom: 100px;
-                min-height: auto;
+                #contact-section { flex-direction: column; justify-content: flex-start; padding-bottom: 100px; min-height: auto; }
+                .form-container { width: 100%; margin-top: 30px; max-width: 100%; }
+                .contact-form { padding: 25px 18px; }
+                .stat-mini-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+                .stat-mini-value { font-size: 1.4rem; }
+                .project-btn { font-size: 0.7rem; padding: 10px 16px; }
             }
-            .form-container { 
-                width: 100%; 
-                margin-top: 30px;
-                max-width: 100%;
-            }
-            .contact-form { padding: 25px 18px; }
-        }
         </style>
     </head>
 
@@ -69,15 +118,15 @@ import Copilot from '../components/Copilot.astro';
                 <h1>Building Systems<br>That Work.</h1>
                 <p class="punchline">
                     Sami Saud. Based in Riyadh, KSA.<br>
-                    I bridge the gap between complex AI research and usable, production-ready applications. I don't just build models; I build reliable systems that solve real business problems from start to finish.
+                    I bridge the gap between complex AI research and usable, production-ready applications. I don't just build models — I build reliable systems that solve real business problems from start to finish.
                 </p>
 
                 <div class="social-links">
-                    <a href="https://github.com/yourusername" target="_blank" class="social-btn">
+                    <a href="https://github.com/samisaud" target="_blank" class="social-btn">
                         <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                         GitHub
                     </a>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-btn">
+                    <a href="https://linkedin.com/in/sami-saud" target="_blank" class="social-btn">
                         <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         LinkedIn
                     </a>
@@ -116,17 +165,17 @@ import Copilot from '../components/Copilot.astro';
                 <div class="spec-item">
                     <span class="label">Education</span>
                     <h3>MS Business Analytics</h3>
-                    <p class="desc">Arizona State University (ASU)<br>GPA: 3.9/4.0 </p>
+                    <p class="desc">Arizona State University (ASU)<br>GPA: 3.9/4.0</p>
                 </div>
                 <div class="spec-item">
                     <span class="label">Education</span>
                     <h3>M.Tech Computer Science</h3>
-                    <p class="desc">Aligarh Muslim University (AMU)<br>GPA: 4.0/4.0 </p>
+                    <p class="desc">Aligarh Muslim University (AMU)<br>GPA: 4.0/4.0</p>
                 </div>
                 <div class="spec-item">
                     <span class="label">Education</span>
                     <h3>B.Tech Computer Science</h3>
-                    <p class="desc">Dr. A.P.J. Abdul Kalam Technical University (AKTU)<br>GPA: 3.8/4.0 </p>
+                    <p class="desc">Dr. A.P.J. Abdul Kalam Technical University<br>GPA: 3.8/4.0</p>
                 </div>
             </div>
 
@@ -141,32 +190,38 @@ import Copilot from '../components/Copilot.astro';
                     <div class="tag-container">
                         <span class="tag">LangChain</span>
                         <span class="tag">OpenAI</span>
-                        <span class="tag">Pinecone Vector Search</span>
+                        <span class="tag">Pinecone</span>
                         <span class="tag">PyTorch</span>
                         <span class="tag">TensorFlow</span>
+                        <span class="tag">XGBoost</span>
+                        <span class="tag">MLflow</span>
                     </div>
                 </div>
                 <div class="spec-item">
                     <span class="label">Software Engineering</span>
                     <h3>Core Development</h3>
-                    <p class="desc">The foundational programming languages used for backend logic and data management.</p>
+                    <p class="desc">Foundational languages and frameworks for backend logic and data management.</p>
                     <div class="tag-container">
                         <span class="tag">Python</span>
                         <span class="tag">C++</span>
                         <span class="tag">SQL / PostgreSQL</span>
                         <span class="tag">Go</span>
+                        <span class="tag">FastAPI</span>
                     </div>
                 </div>
                 <div class="spec-item" style="grid-column: 1 / -1;">
-                    <span class="label">Cloud & Infrastructure</span>
-                    <h3>Deployment & Hosting</h3>
-                    <p class="desc">Cloud platforms and tools required to securely host and scale applications for thousands of users.</p>
+                    <span class="label">Cloud & MLOps</span>
+                    <h3>Deployment & Infrastructure</h3>
+                    <p class="desc">Cloud platforms and MLOps tools to host, scale, and monitor production ML systems.</p>
                     <div class="tag-container">
-                        <span class="tag">Amazon Web Services (AWS)</span>
-                        <span class="tag">Google Cloud (GCP)</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">GCP</span>
                         <span class="tag">Docker</span>
                         <span class="tag">Kubernetes</span>
-                        <span class="tag">FastAPI</span>
+                        <span class="tag">DVC</span>
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">Evidently AI</span>
+                        <span class="tag">Apache Spark</span>
                     </div>
                 </div>
             </div>
@@ -175,8 +230,8 @@ import Copilot from '../components/Copilot.astro';
         <!-- PAGE: EXPERIENCE -->
         <div id="page-deployments" class="page-view">
             <div style="min-height: 40vh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 50px;">
-                <h1>Experience<br>& Projects.</h1>
-                <p class="punchline">A track record of measurable impact across professional roles and academic projects.</p>
+                <h1>Experience<br>& Impact.</h1>
+                <p class="punchline">A track record of measurable results across professional roles and research.</p>
             </div>
 
             <div class="section-divider"></div>
@@ -184,56 +239,59 @@ import Copilot from '../components/Copilot.astro';
             <div style="display: flex; flex-direction: column; gap: 40px;">
 
                 <div class="metric-block">
-                    <span class="label">Data Scientist @ Charity Staffing Inc.</span>
+                    <span class="label">Data Scientist @ Charity Staffing Inc. · 2025–Present</span>
                     <div class="spec-grid">
                         <div>
-                            <span class="metric-value">40<span style="font-size:0.5em;vertical-align:top;">%</span></span>
-                            <h3>Faster Processing.</h3>
+                            <span class="metric-value">35<span style="font-size:0.5em;vertical-align:top;">%</span></span>
+                            <h3>Preprocessing Time Reduced.</h3>
                         </div>
                         <div>
-                            <p class="desc">Built a GPT-4o customer AI agent handling 9,000+ interactions. Architected a hybrid RAG system preventing hallucinations, driving $11K in revenue influence, and cutting latency by 40%.</p>
+                            <p class="desc">Engineered a distributed forecasting pipeline using Apache Spark and XGBoost/SARIMA ensemble, reducing forecast error from 13% to 8% MAPE. Built Spark workflows integrating six data sources and a FastAPI resource simulation tool deployed on GCP supporting a $4.5M grant renewal.</p>
                             <div class="tag-container">
-                                <span class="tag">Conversational AI</span>
-                                <span class="tag">AWS Hosting</span>
-                                <span class="tag">Data Pipelines</span>
+                                <span class="tag">Apache Spark</span>
+                                <span class="tag">XGBoost</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">GCP</span>
                             </div>
-                            <StarButton onclick="triggerCopilot('Deep dive into the Charity Staffing.', 'charity')" />
+                            <StarButton onclick="triggerCopilot('Deep dive into the Charity Staffing architecture.', 'charity')" />
                         </div>
                     </div>
                 </div>
 
                 <div class="metric-block">
-                    <span class="label">AI Research Engineer @ Arizona State Univ.</span>
+                    <span class="label">Data Scientist @ Arizona State University · 2024–2025</span>
                     <div class="spec-grid">
                         <div>
-                            <span class="metric-value">60<span style="font-size:0.5em;vertical-align:top;">%</span></span>
-                            <h3>Time Saved.</h3>
+                            <span class="metric-value">93<span style="font-size:0.5em;vertical-align:top;">%</span></span>
+                            <h3>Classification Accuracy.</h3>
                         </div>
                         <div>
-                            <p class="desc">Engineered an AI-powered semantic search tool, cutting literature review time across 1 million+ medical papers by 60%. Designed an automated scheduling system that reduced resource conflicts by 45%.</p>
+                            <p class="desc">Implemented Vision Transformer (ViT-B/16) in PyTorch achieving 93% top-1 accuracy on 60K medical video frames, outperforming ResNet-50 by 7%. Built NLP pipeline using BERT embeddings to map 12K transcripts to clinical taxonomy. NIH-funded project.</p>
                             <div class="tag-container">
-                                <span class="tag">Semantic Search</span>
-                                <span class="tag">Machine Learning</span>
-                                <span class="tag">Optimization</span>
+                                <span class="tag">Vision Transformer</span>
+                                <span class="tag">PyTorch</span>
+                                <span class="tag">BERT</span>
+                                <span class="tag">NLP</span>
                             </div>
-                            <StarButton onclick="triggerCopilot('Explain the ASU Semantic Search and RL algorithms.', 'asu')" />
+                            <StarButton onclick="triggerCopilot('Explain the ASU Vision Transformer and NLP pipeline.', 'asu')" />
                         </div>
                     </div>
                 </div>
 
                 <div class="metric-block" style="background: rgba(255,255,255,0.02);">
-                    <span class="label">Software Engineer @ ArcSoftech</span>
+                    <span class="label">Software Engineer @ ArcSoftech · 2020–2023</span>
                     <div class="spec-grid">
                         <div>
                             <span class="metric-value">50<span style="font-size:0.5em;vertical-align:top;">k+</span></span>
                             <h3>Daily Transactions.</h3>
                         </div>
                         <div>
-                            <p class="desc">Delivered 15+ production-ready backend modules processing 50,000+ daily transactions. Maintained 99.8% uptime and built automated reporting tools that cut manual administrative workload by 25%.</p>
+                            <p class="desc">Designed Hadoop-based batch ingestion workflows processing 50K+ daily records. Reduced reporting latency from 15 minutes to under 3 minutes by rewriting log parsing scripts. Maintained 99.8% uptime for production data services.</p>
                             <div class="tag-container">
-                                <span class="tag">Backend Software</span>
-                                <span class="tag">Database Design</span>
-                                <span class="tag">Reliability</span>
+                                <span class="tag">Hadoop</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Data Pipelines</span>
                             </div>
                             <StarButton onclick="triggerCopilot('How did you maintain 99.8% uptime at ArcSoftech?', 'arcsoftech')" />
                         </div>
@@ -241,18 +299,21 @@ import Copilot from '../components/Copilot.astro';
                 </div>
 
                 <div class="metric-block" style="background: rgba(255,255,255,0.02);">
-                    <span class="label">Academic Capstone @ PetSmart</span>
+                    <span class="label">Graduate Thesis · Silent Heart Attack Detection</span>
                     <div class="spec-grid">
                         <div>
-                            <h3 style="font-size: 2rem; margin: 10px 0; line-height: 1.2;">Retail Inventory Analytics.</h3>
+                            <span class="metric-value">99.2<span style="font-size:0.5em;vertical-align:top;">%</span></span>
+                            <h3>Detection Accuracy.</h3>
                         </div>
                         <div>
-                            <p class="desc">Engineered cloud-based data pipelines to track inventory performance and predict restocking needs. Cleaned complex datasets to improve demand forecast accuracy by 20% in a high-volume environment.</p>
+                            <p class="desc">Engineered a portable AI cardiac detection system in collaboration with Google engineers. Applied Hidden Markov Models on real-time ECG data achieving 99.24% accuracy detecting silent myocardial infarctions via Bluetooth cloud-native architecture.</p>
                             <div class="tag-container">
-                                <span class="tag">Data Engineering</span>
-                                <span class="tag">Forecasting</span>
+                                <span class="tag">HMM</span>
+                                <span class="tag">IoT</span>
+                                <span class="tag">Real-time ML</span>
+                                <span class="tag">Cloud Architecture</span>
                             </div>
-                            <StarButton onclick="triggerCopilot('Explain the cloud pipeline built for PetSmart.', 'petsmart')" />
+                            <StarButton onclick="triggerCopilot('Explain the cardiac detection system architecture.', 'cardiac')" />
                         </div>
                     </div>
                 </div>
@@ -261,6 +322,117 @@ import Copilot from '../components/Copilot.astro';
 
             <div style="text-align: center; margin-top: 100px; padding-bottom: 50px;">
                 <span class="label" style="color: #666;">End of Experience</span>
+            </div>
+        </div>
+
+        <!-- PAGE: PROJECTS -->
+        <div id="page-projects" class="page-view">
+            <div style="min-height: 40vh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 50px;">
+                <span class="label">Live & Interactive</span>
+                <h1>Projects<br>You Can Try.</h1>
+                <p class="punchline">Real systems, deployed and running. Click through and interact with them directly — no screenshots.</p>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div style="display: flex; flex-direction: column; gap: 40px;">
+
+                <!-- FRAUD DETECTION PROJECT -->
+                <div class="metric-block" style="position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 20px; right: 20px;">
+                        <span class="live-badge">● LIVE</span>
+                    </div>
+                    <span class="label">MLOps · Fraud Detection · FastAPI · CI/CD</span>
+                    <div class="spec-grid">
+                        <div>
+                            <span class="metric-value" style="font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.3;">End-to-End<br>Fraud Detection<br>Pipeline.</span>
+                            <div class="tag-container" style="margin-top: 20px;">
+                                <span class="tag">XGBoost</span>
+                                <span class="tag">LightGBM</span>
+                                <span class="tag">MLflow</span>
+                                <span class="tag">DVC</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">SHAP</span>
+                                <span class="tag">Evidently AI</span>
+                                <span class="tag">GitHub Actions</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">SMOTE</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="desc">A production-grade ML pipeline for credit card fraud detection on 284,807 real transactions. Features DVC data versioning, MLflow experiment tracking on DagsHub, SMOTE for class imbalance, SHAP explainability, drift monitoring with Evidently AI, and a live FastAPI inference server — all wired into a full CI/CD pipeline via GitHub Actions.</p>
+
+                            <div class="stat-mini-grid">
+                                <div class="stat-mini">
+                                    <span class="label" style="font-size: 0.62rem;">ROC-AUC</span>
+                                    <div class="stat-mini-value">0.979</div>
+                                </div>
+                                <div class="stat-mini">
+                                    <span class="label" style="font-size: 0.62rem;">Avg Precision</span>
+                                    <div class="stat-mini-value">0.841</div>
+                                </div>
+                                <div class="stat-mini">
+                                    <span class="label" style="font-size: 0.62rem;">Transactions</span>
+                                    <div class="stat-mini-value">284K</div>
+                                </div>
+                                <div class="stat-mini">
+                                    <span class="label" style="font-size: 0.62rem;">Pipeline Stages</span>
+                                    <div class="stat-mini-value">5</div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap;">
+                                <a href="https://ss-fraud-detection.streamlit.app/" target="_blank" class="project-btn project-btn-primary">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                    Try It Live
+                                </a>
+                                <a href="https://github.com/samisaud" target="_blank" class="project-btn project-btn-secondary">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                    View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live iframe embed -->
+                    <div class="browser-chrome">
+                        <div class="browser-bar">
+                            <span class="browser-dot" style="background: #ff5f57;"></span>
+                            <span class="browser-dot" style="background: #ffbd2e;"></span>
+                            <span class="browser-dot" style="background: #28c840;"></span>
+                            <span style="font-family: 'Cinzel', serif; font-size: 0.68rem; color: var(--text-dim); margin-left: 8px; letter-spacing: 0.1em;">ss-fraud-detection.streamlit.app</span>
+                        </div>
+                        <iframe
+                            src="https://ss-fraud-detection.streamlit.app/?embed=true"
+                            width="100%"
+                            height="520px"
+                            style="display: block; border: none; background: #0e1117;"
+                            loading="lazy"
+                            title="Fraud Detection Live Demo">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- COMING SOON -->
+                <div class="metric-block" style="background: rgba(255,255,255,0.01); border-style: dashed; opacity: 0.6;">
+                    <span class="live-badge" style="background: rgba(212,175,55,0.1); border-color: rgba(212,175,55,0.3); color: var(--accent-gold);">⧗ IN PROGRESS</span>
+                    <div style="margin-top: 20px;">
+                        <h3>Arabic Document Intelligence</h3>
+                        <p class="desc" style="margin-top: 10px;">Fine-tuned Arabic NLP model for contract analysis, clause extraction and risk flagging. Hybrid RAG with custom embeddings trained on Saudi legal corpus. Targeting Riyadh enterprise market.</p>
+                        <div class="tag-container">
+                            <span class="tag">Arabic NLP</span>
+                            <span class="tag">RAG</span>
+                            <span class="tag">Fine-tuning</span>
+                            <span class="tag">Pinecone</span>
+                            <span class="tag">Vision 2030</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 80px; padding-bottom: 50px;">
+                <span class="label" style="color: #666;">More projects shipping soon</span>
             </div>
         </div>
 
@@ -289,7 +461,7 @@ import Copilot from '../components/Copilot.astro';
                     <div style="margin-top: 40px; padding-left: 10px;">
                         <span class="label">Direct Contact</span>
                         <p style="color: #fff; font-size: 1.1rem; margin-top: 5px;">ssaud.asu@gmail.com</p>
-                        <p style="color: #fff; font-size: 1.1rem;">+1 (480) 712-3491</p>
+                        <p style="color: #fff; font-size: 1.1rem;">+966 530799556</p>
                     </div>
                 </div>
 
@@ -297,12 +469,11 @@ import Copilot from '../components/Copilot.astro';
             </section>
         </div>
 
-    </div><!-- end #view-container -->
+    </div>
 
 </Layout>
 
 <script>
-    // --- STAR BUTTON PATH SIZING ---
     function initStarButtons() {
         document.querySelectorAll('.star-btn').forEach((btn) => {
             const el = btn as HTMLElement;
@@ -314,7 +485,6 @@ import Copilot from '../components/Copilot.astro';
     window.addEventListener('load', initStarButtons);
     window.addEventListener('resize', initStarButtons);
 
-    // --- SPA PAGE ROUTING ---
     let currentPage = 'index';
     const container = document.getElementById('view-container') as HTMLElement;
 

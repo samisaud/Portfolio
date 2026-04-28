@@ -4,6 +4,7 @@
     <a onclick="switchPage('index')" id="nav-index" class="active">Overview</a>
     <a onclick="switchPage('architecture')" id="nav-architecture">Background</a>
     <a onclick="switchPage('deployments')" id="nav-deployments">Experience</a>
+    <a onclick="switchPage('projects')" id="nav-projects">Projects</a>
     <a onclick="switchPage('contact')" id="nav-contact">Contact</a>
 </nav>
 
@@ -11,9 +12,11 @@
     nav {
         position: fixed; top: 40px; right: 5vw; z-index: 100;
         display: flex; gap: 20px; align-items: center;
-        font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+        font-family: 'Cinzel', serif;
+        font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
         background: rgba(0,0,0,0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-        padding: 8px 12px 8px 24px; border-radius: 100px; border: 1px solid var(--border-color);
+        padding: 8px 12px 8px 24px; border-radius: 100px;
+        border: 1px solid rgba(212,175,55,0.2);
     }
     nav a {
         color: var(--text-dim); text-decoration: none; cursor: pointer;
@@ -22,16 +25,19 @@
     nav a:hover, nav a.active { color: var(--text-main); }
 
     #nav-contact {
-        background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 50px;
-        box-shadow: 0 4px 15px rgba(21, 121, 246, 0.3); transition: all 0.3s ease;
+        background: var(--accent); color: #fff;
+        padding: 10px 20px; border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(21,121,246,0.3);
+        transition: all 0.3s ease;
     }
-    #nav-contact:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(21, 121, 246, 0.5); }
+    #nav-contact:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(21,121,246,0.5); }
 
     @media (max-width: 900px) {
         nav {
             top: auto; bottom: 20px; left: 50%; right: auto;
-            transform: translateX(-50%); width: 90vw; justify-content: space-around;
-            padding: 12px 15px; gap: 10px; font-size: 0.75rem;
+            transform: translateX(-50%); width: 95vw;
+            justify-content: space-around;
+            padding: 12px 10px; gap: 5px; font-size: 0.6rem;
         }
         #nav-contact {
             background: transparent; color: var(--text-dim);
